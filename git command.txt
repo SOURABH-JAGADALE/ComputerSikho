@@ -1,0 +1,46 @@
+1. git config --global user.name "Swapnil"
+2. git config --globla user.email "swapnil.pawse@mmit.edu.in"
+3. git config --list // to check what is configuration your git have
+/*
+if your in linux then u can set your editor  	by using below command 
+git config --global code.editor (editor name ) emacs , vim these are linux editor name 
+*/
+by using vim command you can open any file in terminal 
+to create git repository in your current folder open git bash terminal in that folder and run command 
+4. git init // create local repository in your current folder
+
+to track your current file record through git you have to add file into git for that command 
+5.for single file git add name of file 
+  . for whole file git add -A or git add --a
+
+6. for commiting all file  git commit -m "message what you have changed"
+7. for deleting your git repository : git rm -rf .git
+8. pwd = present working directory
+9. ls = list of content in folder 
+10. git log // who made changes when in file we can see that by this command 
+11. to create file in by using git use command (touch name of file ) 
+12. to avoid any file , folder & any particular extensions file from tracking in your dir we use .gitignore folder
+13.git diff command used to comapare your staging area to working directory 
+14.git diff --staged this will compare your last commit and staging area
+15. to skipped staging area command (git commit -a -m "message")
+16. to moving and remaining files in git command (git mv file name_file new name)
+
+17. to remove your file permanetaly (git rm file name)
+18. to untrack your file git command (git rm --cached file name)
+19. to see commit (git log -p) or summary of git log in short  if you want to see (git log --stat)
+20. to see all commit in single line (git log --pretty=oneline ) (git log --pretty=short)
+21. if you want to see with respect to time filter commit then e.g 2 days(git log --since=2.days)(git log --pretty=format:"%h --ae")
+22. to do particular change in last commit ( git commit --amend)
+23. alias of git command ( git config --global alias.unstage 'restore --staged --')
+24. branch management
+    0. git checkout -b branch name ( to directly create branch and switched into it)
+    1. git branch -v  (to see the last commit and branch id in all branches & message )
+    2. git merge branch name ( to merge branch into master branch)
+    3. git branch --merged (show us which branch is merged )
+    4. git branch --no-merged (show us which branch is not merged)
+    5. git branch -d branch name ( to delete branch )
+    6. git branch -D branch name ( if your branch is not merged then it will show message branch is not merged not safe to delete but if you delete use this command)
+    7. to create branch in git is not expensive so you have to create more branches and use it by safely 
+
+
+

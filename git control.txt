@@ -1,0 +1,55 @@
+command in git and uses of command 
+1. git init // its intialized your empty git repository
+2. ls -lart  // show all hidden folder
+3. git status // to check your files status
+4.untracked files means git have no controls on your file if anything changes in your file it doesn't matter to git 
+5.for giving control to git we have sent file into staging area for that we have staging area means snippshot of your work
+6. git commit // intial commit  for(when this window open press I then you can type (type intial commit for exit press ESC and type (:wq)) enter
+7. touch command use create blank file in vs code
+8. to tracked all files use all at same time use command ( git add -A)
+9. to commit file use command (git commit -m "added more files")
+10. if somebody change your files and save it and close terminal then how to recover your file 
+11. command use for above is ( git checkout file name) on this command (all your files will be matched to last commit ) and your files will be restored
+12. above command is used for single file if we have multiple file then use ( git checkout -f)  
+13. git log used to find what you have commited (kya kya commit kiya & it will you tell you commit message)
+14. if you want filter output of git log  (consider you have 1000 commit but you have to see only last five then used below command)
+15. command (git log -p -(how many commit you want to see)) it will show git diff output press Q to quit
+16. git diff compare your working directory to stagin directory & after changes if you use git add -A command it will show nothing to comapare(if your working directory and staging area is same it will show you nothing)
+17. if you want compare your staging area to last commit then command ( git diff --staged)
+18. if you are working on fixed files and you dont want use staging area for multiple files to skipped staging area stepped to use below command
+19. git commit -a -m " skipped staging area and fixed <"
+20. to see list of file in your working directory command ( ls) (this is linux command but we can used in git bash)
+21. if you want remove your file which is commited by mistake 
+{ two command 
+   1. git rm file name // this command remove your file from working directory and staging area and remove your permanentaly
+    2. git rm --cached file name  // this only remove your file from staging area not from your hard disk OR will use this command to put your file at untracked stage
+}
+22. if you want summerized status then used (git status -s)
+{
+  1.  if you modifed file run short status command and then it will show you in red color M (meaning of this m is modified file into working directory and after
+	if you add this file into staging area and run short status command it will show you Green color M meaning of this m is modified file is in staging area 
+}
+23. if you want ignore any file then make folder by using git bash terminal (.gitignore if you ignore all files which extension have .log 
+      then write in this folder (*.log or if u have to ignore specific type of file (mylogs.log write this into .gitignore o
+      or if u want mylog.log file ignore in your just current directory then used (/mylogs.log ) meaning of forward slash is ( jaha par .gitignore hai bus vahi per is file ko ignore kare or kahi pe nahi
+     
+      or if u want ignore any folder or directory then use forward slash after that folder name in .gitignore file  (e.g ignore/)
+
+24. in this point we are going to see what is meaning of branches and subbranches in git terminal
+   {
+   1. subbranch= is copy of main branch whatever changes we are goint to do that will not reflect directly into main branch 
+   2. for knowing how many branch we have command (git branch )
+   3. for creating another branch in main branch command (git branch branch name)
+   4. for switching main branch to subbranch command (git checkout branch name)
+   5. for merging your subbranch into main branch command (git merge branch name)
+   6. to create direct branch from your current branch and switched into it command (git checkout -b branch name) 
+
+25. how to push your local repository into github repository
+    1. to change url command (git remote set-url origin (paste url)
+    2. to check how many url u have command( git remote -v or git remote )
+    3. to push command (git push -u origin master)	
+    4. to push branch also switched to branch command (git push -u origin branch name)
+
+26. command pwd // tells you about in which directory you are // cd==> means change directory
+     
+     if you used slash c after after cd you will directly come to c drive
