@@ -77,7 +77,7 @@ CREATE TABLE Enquiry
 	enquirer_email_id varchar(200),
 	enquiry_date date Not Null,
 	enquirer_query varchar(200),
-	closure_reasonID int Not Null, Foreign Key(closure_reasonID) references Closure_Reason_Master(Closure_ReasonID),
+	closure_reasonID int, Foreign Key(closure_reasonID) references Closure_Reason_Master(Closure_ReasonID),
 	closure_reason varchar(200),
 	enquiry_processed_flag bit default 0,
 	course_id int Not Null, FOREIGN KEY(course_id) references Course(course_id),
