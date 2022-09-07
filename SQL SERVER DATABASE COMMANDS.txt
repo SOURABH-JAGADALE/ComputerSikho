@@ -79,7 +79,7 @@ CREATE TABLE Enquiry
 	enquirer_mobile varchar(max) Not Null,
 	enquirer_alternate_mobile varchar(max) Not Null,
 	enquirer_email_id varchar(max),
-	enquiry_date date Not Null,
+	enquiry_date date Not Null default (CAST( GETDATE() AS Date )) ,
 	enquirer_query varchar(max),
 	closure_reasonID int, Foreign Key(closure_reasonID) references Closure_Reason_Master(Closure_ReasonID),
 	closure_reason varchar(max),
