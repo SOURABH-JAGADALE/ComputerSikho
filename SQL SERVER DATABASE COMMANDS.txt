@@ -88,7 +88,7 @@ CREATE TABLE Enquiry
 	staff_id int NOT Null, FOREIGN KEY(staff_id) references Staff(staff_id),
 	Student_Name varchar(max) Not Null,
 	enquiry_counter int Not NUll,
-	Follow_up date Not Null
+	Follow_up date Not Null default (DATEADD(day, 3, (CAST( GETDATE() AS Date ))))
 );
 
 
