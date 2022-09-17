@@ -1,9 +1,9 @@
-VIDEOS-->
-create table Videos(video_id int primary key,video_description varchar(max),video_url varchar(max),video_is_active bit not null default 1,start_date date,end_date date)
+
+create table Videos(video_id int primary key IDENTITY(1,1),video_description varchar(max), video_url varchar(max),video_is_active bit not null default 1,start_date date,end_date date, course_id int)  ;
 
 
 
-PAYMENT-TYPE-MASTER-->
+
 create table Payment_Type_Master (
 	payment_typeid int primary key IDENTITY(1,1),
 	payment_type_desc varchar(100) not null
@@ -12,29 +12,28 @@ create table Payment_Type_Master (
 
 
 
-ALBUM-->
+
 create table Album(album_id int primary key IDENTITY(1,1),album_name varchar(max) NOT NULL,album_description varchar(max),album_is_active bit default 1 not null,start_date date NOT NULL,end_date date NOT NULL);
 
 
 
 
-IMAGE-->
+
 create table Image(image_id int primary key IDENTITY(1,1),image_path varchar(max) not null,image_is_active bit default 1,is_album_cover bit default 1,album_id int not null, foreign key (album_id) references Album(album_id));
 
 
 
 
-STAFF-->
+
 create table Staff(staff_id int primary key IDENTITY(1,1),staff_name varchar(max) not null,photo_url varchar(max),staff_mobile varchar(max),staff_email varchar(max) not null,staff_username varchar(max) not null,staff_password varchar(max) not null)
 
 
 
-COURSE-->
 create table Course(course_id int primary key IDENTITY(1,1),course_name varchar(max) not null,course_description varchar(max)not null,course_duration int not null,course_fees int not null,course_syllabus text not null,age_grp_type varchar(max) not null,course_is_active bit default 1,cover_photo varchar(max),video_id int,FOREIGN KEY (video_id) REFERENCES Videos(video_id))
 
 
 
-BATCH-->
+
 CREATE TABLE Batch
 (
 	batch_id int primary key IDENTITY(1,1),batch_name varchar(max) NOT NULL,batch_start_time date NOT NULL,
@@ -45,8 +44,7 @@ CREATE TABLE Batch
 
 
 
-STUDENT--->
-create table Student(student_id int  primary key IDENTITY(1,1) , student_name varchar(MAX) not null, student_address varchar(MAX)  not null, student_gender varchar(MAX) not null, photo_url varchar(MAX) not null, student_dob date not null , student_age int  not null , student_qualification varchar(MAX) not null, student_mobile varchar(max)  not null,
+create table Student(student_id int  primary key IDENTITY(1,1) , student_name varchar(MAX) not null, student_address varchar(MAX)  not null, student_gender varchar(MAX) not null, photo_url varchar(MAX), student_dob date not null , student_age int  not null , student_qualification varchar(MAX) not null, student_mobile varchar(max)  not null,
 student_password varchar(MAX)  not null, student_username varchar(MAX)  not null, 
 batch_id int not null,course_id int not null, FOREIGN KEY (batch_id) REFERENCES Batch(batch_id),FOREIGN KEY (course_id) REFERENCES Course(course_id));
 
@@ -54,7 +52,7 @@ batch_id int not null,course_id int not null, FOREIGN KEY (batch_id) REFERENCES 
 
 
 
-PAYMENTMASTER-->
+
 create table PaymentMaster (
 	payment_master_id int primary key IDENTITY(1,1),
 	student_id int,
@@ -65,12 +63,11 @@ create table PaymentMaster (
 )
 
 
-Closure_Reason_Master--->
+
 create table Closure_Reason_Master (Closure_ReasonID int Primary Key IDENTITY(1,1), Closure_Reason_Desc Varchar(max));
 
 
 
-ENQUIRY--->
 CREATE TABLE Enquiry
 (
 	enquiry_id int primary key IDENTITY(1,1),
@@ -79,7 +76,7 @@ CREATE TABLE Enquiry
 	enquirer_mobile varchar(max) Not Null,
 	enquirer_alternate_mobile varchar(max) Not Null,
 	enquirer_email_id varchar(max),
-	enquiry_date date Not Null default (CAST( GETDATE() AS Date )) ,
+	enquiry_date date Not Null,
 	enquirer_query varchar(max),
 	closure_reasonID int, Foreign Key(closure_reasonID) references Closure_Reason_Master(Closure_ReasonID),
 	closure_reason varchar(max),
@@ -94,15 +91,17 @@ CREATE TABLE Enquiry
 
 
 
-FOLLOW-UP-->
+
 create table Followup (
-	followup_id int primary key,
+	followup_id int primary key IDENTITY(1,1),
 	enquiry_id int not null,
 	staff_id int,
 	followup_msg varchar(150),
-	is_active bit not null default 0,
+	is_active bit not null default 1,
 	foreign key (enquiry_id) references Enquiry(enquiry_id),
-	foreign key (staff_id) references Staff(staff_id)
+	foreign key (staff_id) references Staff(staff_id),
+	closure_reasonID int, Foreign Key(closure_reasonID) references Closure_Reason_Master(Closure_ReasonID),	
+	
 );
 
 
@@ -110,7 +109,6 @@ create table Followup (
 
 
 
-PAYMENT-->
 create table Payment (
 	payment_id int primary key IDENTITY(1,1),
 	payment_date date,
@@ -125,24 +123,3 @@ create table Payment (
 	foreign key (student_id) references Student(student_id),
 	foreign key (batch_id) references Batch(batch_id)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
